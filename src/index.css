@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap');
+@import "tailwindcss";
+
+html, 
+body, 
+#root {
+  min-height: 100dvh;
+  height: 100%;
+  margin: 0;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #95bffa;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.btn{
+  @apply bg-green-600 px-2 py-1 rounded text-white cursor-pointer border-0 transform hover:scale-103;
+}
+
+.menu{
+  @apply flex items-center gap-3 cursor-pointer hover:bg-slate-100 rounded-sm pl-3 w-full p-3 border-b border-b-gray-100;
+}
+
+#pdf-paper h1 {
+  color: #0f172a !important;
+}
+
+#pdf-paper .text-justify {
+  color: #1e293b !important;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #pdf-paper, #pdf-paper * {
+    visibility: visible;
+  }
+  #pdf-paper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  #pdf-paper div {
+    text-rendering: optimizeLegibility;
+    text-justify: inter-word;
+  }
+
+  mark {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* 2. Only show the Overview Section and its children */
+  .overview-print-container, .overview-print-container * {
+    visibility: visible;
+  }
+
+  /* 3. Position the overview at the top-left of the PDF page */
+  .overview-print-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color: white !important;
+    padding: 20px;
+  }
+
+  /* 4. Hide interactive elements like buttons and "View All" links in the PDF */
+  button, .no-print {
+    display: none !important;
+  }
+
+  /* 5. Ensure colors show up in the PDF */
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+
